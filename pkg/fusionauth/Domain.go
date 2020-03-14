@@ -2306,6 +2306,10 @@ type SAMLv2IdentityProvider struct {
   UseNameIdForEmail         bool                      `json:"useNameIdForEmail,omitempty"`
 }
 
+type SearchEngineConfiguration struct {
+  SearchEngineType          string                    `json:"searchEngineType,omitempty"`
+}
+
 /**
  * Search API request.
  *
@@ -2438,6 +2442,7 @@ type SystemConfiguration struct {
   EventLogConfiguration     EventLogConfiguration     `json:"eventLogConfiguration,omitempty"`
   LoginRecordConfiguration  LoginRecordConfiguration  `json:"loginRecordConfiguration,omitempty"`
   ReportTimezone            string                    `json:"reportTimezone,omitempty"`
+  SearchEngineConfiguration SearchEngineConfiguration `json:"searchEngineConfiguration,omitempty"`
   UiConfiguration           UIConfiguration           `json:"uiConfiguration,omitempty"`
 }
 
