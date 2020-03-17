@@ -625,6 +625,8 @@ type EmailAddress struct {
  * @author Brian Pontarelli
  */
 type EmailConfiguration struct {
+  DefaultFromEmail          string                    `json:"defaultFromEmail,omitempty"`
+  DefaultFromName           string                    `json:"defaultFromName,omitempty"`
   ForgotPasswordEmailTemplateId string                    `json:"forgotPasswordEmailTemplateId,omitempty"`
   Host                      string                    `json:"host,omitempty"`
   Password                  string                    `json:"password,omitempty"`
