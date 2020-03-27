@@ -594,6 +594,10 @@ type DisplayableRawLogin struct {
 type DomainBasedIdentityProvider struct {
 }
 
+type ElasticSearchEngineConfiguration struct {
+  ServiceURL                string                    `json:"serviceURL,omitempty"`
+}
+
 /**
  * This class is an abstraction of a simple email message.
  *
@@ -2309,6 +2313,7 @@ type SAMLv2IdentityProvider struct {
 }
 
 type SearchEngineConfiguration struct {
+  Elasticsearch             ElasticSearchEngineConfiguration `json:"elasticsearch,omitempty"`
   SearchEngineType          string                    `json:"searchEngineType,omitempty"`
 }
 
