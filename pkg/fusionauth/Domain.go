@@ -2465,6 +2465,13 @@ func (b *SystemConfigurationResponse) SetStatus(status int) {
   b.StatusCode = status
 }
 
+/**
+ * @author Daniel DeGroff
+ */
+type SystemLogsExportRequest struct {
+  BaseExportRequest
+}
+
 type Templates struct {
   EmailComplete             string                    `json:"emailComplete,omitempty"`
   EmailSend                 string                    `json:"emailSend,omitempty"`
