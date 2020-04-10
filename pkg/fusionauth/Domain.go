@@ -2238,6 +2238,7 @@ type RegistrationRequest struct {
 type RegistrationResponse struct {
   BaseHTTPResponse
   Registration              UserRegistration          `json:"registration,omitempty"`
+  Token                     string                    `json:"token,omitempty"`
   User                      User                      `json:"user,omitempty"`
 }
 func (b *RegistrationResponse) SetStatus(status int) {
@@ -3236,6 +3237,7 @@ type UserRequest struct {
  */
 type UserResponse struct {
   BaseHTTPResponse
+  Token                     string                    `json:"token,omitempty"`
   User                      User                      `json:"user,omitempty"`
 }
 func (b *UserResponse) SetStatus(status int) {
