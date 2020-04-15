@@ -2471,6 +2471,7 @@ func (b *SystemConfigurationResponse) SetStatus(status int) {
  */
 type SystemLogsExportRequest struct {
   BaseExportRequest
+  LastNBytes                int                       `json:"lastNBytes,omitempty"`
 }
 
 type Templates struct {
