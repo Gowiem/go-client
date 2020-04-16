@@ -842,6 +842,7 @@ const (
   EventType_UserReactivate       EventType            = "UserReactivate"
   EventType_UserAction           EventType            = "UserAction"
   EventType_JWTRefreshTokenRevoke EventType            = "JWTRefreshTokenRevoke"
+  EventType_JWTRefresh           EventType            = "JWTRefresh"
   EventType_JWTPublicKeyUpdate   EventType            = "JWTPublicKeyUpdate"
   EventType_UserLoginSuccess     EventType            = "UserLoginSuccess"
   EventType_UserLoginFailed      EventType            = "UserLoginFailed"
@@ -1439,6 +1440,20 @@ type JWTConfiguration struct {
 type JWTPublicKeyUpdateEvent struct {
   BaseEvent
   ApplicationIds            []string                  `json:"applicationIds,omitempty"`
+}
+
+/**
+ * Models the JWT Refresh Event. This event will be fired when a JWT is "refreshed" (generated) using a Refresh Token.
+ *
+ * @author Daniel DeGroff
+ */
+type JWTRefreshEvent struct {
+  BaseEvent
+  ApplicationId             string                    `json:"applicationId,omitempty"`
+  Original                  string                    `json:"original,omitempty"`
+  RefreshToken              string                    `json:"refreshToken,omitempty"`
+  Token                     string                    `json:"token,omitempty"`
+  UserId                    string                    `json:"userId,omitempty"`
 }
 
 /**
@@ -2162,6 +2177,7 @@ func (b *RecentLoginResponse) SetStatus(status int) {
  */
 type RefreshRequest struct {
   RefreshToken              string                    `json:"refreshToken,omitempty"`
+  Token                     string                    `json:"token,omitempty"`
 }
 
 /**
