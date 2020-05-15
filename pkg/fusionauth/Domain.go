@@ -108,6 +108,31 @@ const (
 )
 
 /**
+ * @author Daniel DeGroff
+ */
+type AppleApplicationConfiguration struct {
+  BaseIdentityProviderApplicationConfiguration
+  ButtonText                string                    `json:"buttonText,omitempty"`
+  KeyId                     string                    `json:"keyId,omitempty"`
+  Scope                     string                    `json:"scope,omitempty"`
+  ServicesId                string                    `json:"servicesId,omitempty"`
+  TeamId                    string                    `json:"teamId,omitempty"`
+}
+
+/**
+ * @author Daniel DeGroff
+ */
+type AppleIdentityProvider struct {
+  BaseIdentityProvider
+  ButtonText                string                    `json:"buttonText,omitempty"`
+  KeyId                     string                    `json:"keyId,omitempty"`
+  LambdaConfiguration       ProviderLambdaConfiguration `json:"lambdaConfiguration,omitempty"`
+  Scope                     string                    `json:"scope,omitempty"`
+  ServicesId                string                    `json:"servicesId,omitempty"`
+  TeamId                    string                    `json:"teamId,omitempty"`
+}
+
+/**
  * @author Seth Musselman
  */
 type Application struct {
@@ -1272,6 +1297,7 @@ const (
   IdentityProviderType_Twitter              IdentityProviderType = "Twitter"
   IdentityProviderType_SAMLv2               IdentityProviderType = "SAMLv2"
   IdentityProviderType_HYPR                 IdentityProviderType = "HYPR"
+  IdentityProviderType_Apple                IdentityProviderType = "Apple"
 )
 
 /**
@@ -1486,13 +1512,13 @@ type Key struct {
   Certificate               string                    `json:"certificate,omitempty"`
   CertificateInformation    CertificateInformation    `json:"certificateInformation,omitempty"`
   ExpirationInstant         int64                     `json:"expirationInstant,omitempty"`
+  HasPrivateKey             bool                      `json:"hasPrivateKey,omitempty"`
   Id                        string                    `json:"id,omitempty"`
   InsertInstant             int64                     `json:"insertInstant,omitempty"`
   Issuer                    string                    `json:"issuer,omitempty"`
   Kid                       string                    `json:"kid,omitempty"`
   Length                    int                       `json:"length,omitempty"`
   Name                      string                    `json:"name,omitempty"`
-  Pair                      bool                      `json:"pair,omitempty"`
   PrivateKey                string                    `json:"privateKey,omitempty"`
   PublicKey                 string                    `json:"publicKey,omitempty"`
   Secret                    string                    `json:"secret,omitempty"`
