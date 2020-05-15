@@ -1409,6 +1409,12 @@ type JSONWebKey struct {
 }
 
 /**
+ * Interface for all identity providers that have a known JWKS endpoint.
+ */
+type JWKSBasedIdentityProvider struct {
+}
+
+/**
  * @author Daniel DeGroff
  */
 type JWKSResponse struct {
@@ -2276,6 +2282,7 @@ type RegistrationRequest struct {
  */
 type RegistrationResponse struct {
   BaseHTTPResponse
+  RefreshToken              string                    `json:"refreshToken,omitempty"`
   Registration              UserRegistration          `json:"registration,omitempty"`
   Token                     string                    `json:"token,omitempty"`
   User                      User                      `json:"user,omitempty"`
