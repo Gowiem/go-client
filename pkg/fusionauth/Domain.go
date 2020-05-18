@@ -525,6 +525,9 @@ const (
   ContentStatus_REJECTED             ContentStatus        = "REJECTED"
 )
 
+/**
+ * @author Trevor Smith
+ */
 type CORSConfiguration struct {
   Enableable
   AllowCredentials          bool                      `json:"allowCredentials,omitempty"`
@@ -532,7 +535,18 @@ type CORSConfiguration struct {
   AllowedMethods            []HTTPMethod              `json:"allowedMethods,omitempty"`
   AllowedOrigins            []string                  `json:"allowedOrigins,omitempty"`
   ExposedHeaders            []string                  `json:"exposedHeaders,omitempty"`
+  IdentityProviderOverride  map[string]CORSOverride   `json:"identityProviderOverride,omitempty"`
   PreflightMaxAgeInSeconds  int                       `json:"preflightMaxAgeInSeconds,omitempty"`
+}
+
+/**
+ * @author Daniel DeGroff
+ */
+type CORSOverride struct {
+  AllowedHeaders            []string                  `json:"allowedHeaders,omitempty"`
+  AllowedMethods            []HTTPMethod              `json:"allowedMethods,omitempty"`
+  AllowedOrigins            []string                  `json:"allowedOrigins,omitempty"`
+  ExposedHeaders            []string                  `json:"exposedHeaders,omitempty"`
 }
 
 /**
