@@ -539,16 +539,6 @@ type CORSConfiguration struct {
 }
 
 /**
- * @author Daniel DeGroff
- */
-type CORSOverride struct {
-  AllowedHeaders            []string                  `json:"allowedHeaders,omitempty"`
-  AllowedMethods            []HTTPMethod              `json:"allowedMethods,omitempty"`
-  AllowedOrigins            []string                  `json:"allowedOrigins,omitempty"`
-  ExposedHeaders            []string                  `json:"exposedHeaders,omitempty"`
-}
-
-/**
  * @author Brian Pontarelli
  */
 type Count struct {
@@ -2328,12 +2318,6 @@ type RememberPreviousPasswords struct {
 type Requirable struct {
   Enableable
   Required                  bool                      `json:"required,omitempty"`
-}
-
-/**
- * Interface for any object that requires CORS configuration.
- */
-type RequiresCORSConfiguration struct {
 }
 
 /**
