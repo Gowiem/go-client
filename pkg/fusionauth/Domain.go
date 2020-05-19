@@ -126,7 +126,6 @@ type AppleIdentityProvider struct {
   BaseIdentityProvider
   ButtonText                string                    `json:"buttonText,omitempty"`
   KeyId                     string                    `json:"keyId,omitempty"`
-  LambdaConfiguration       ProviderLambdaConfiguration `json:"lambdaConfiguration,omitempty"`
   Scope                     string                    `json:"scope,omitempty"`
   ServicesId                string                    `json:"servicesId,omitempty"`
   TeamId                    string                    `json:"teamId,omitempty"`
@@ -325,6 +324,7 @@ type BaseIdentityProvider struct {
   Data                      map[string]interface{}    `json:"data,omitempty"`
   Debug                     bool                      `json:"debug,omitempty"`
   Id                        string                    `json:"id,omitempty"`
+  LambdaConfiguration       ProviderLambdaConfiguration `json:"lambdaConfiguration,omitempty"`
   Name                      string                    `json:"name,omitempty"`
   Type                      IdentityProviderType      `json:"type,omitempty"`
 }
@@ -535,7 +535,6 @@ type CORSConfiguration struct {
   AllowedMethods            []HTTPMethod              `json:"allowedMethods,omitempty"`
   AllowedOrigins            []string                  `json:"allowedOrigins,omitempty"`
   ExposedHeaders            []string                  `json:"exposedHeaders,omitempty"`
-  IdentityProviderOverride  map[string]CORSOverride   `json:"identityProviderOverride,omitempty"`
   PreflightMaxAgeInSeconds  int                       `json:"preflightMaxAgeInSeconds,omitempty"`
 }
 
@@ -1423,9 +1422,9 @@ type JSONWebKey struct {
 }
 
 /**
- * Interface for all identity providers that have a known JWKS endpoint.
+ * Interface for any object that can provide JSON Web key Information.
  */
-type JWKSBasedIdentityProvider struct {
+type JSONWebKeyInfoProvider struct {
 }
 
 /**
@@ -1647,6 +1646,7 @@ const (
   LambdaType_OpenIDReconcile      LambdaType           = "OpenIDReconcile"
   LambdaType_SAMLv2Reconcile      LambdaType           = "SAMLv2Reconcile"
   LambdaType_SAMLv2Populate       LambdaType           = "SAMLv2Populate"
+  LambdaType_GenericIdpReconcile  LambdaType           = "GenericIdpReconcile"
 )
 
 /**
@@ -2046,7 +2046,6 @@ type OpenIdConnectIdentityProvider struct {
   ButtonImageURL            string                    `json:"buttonImageURL,omitempty"`
   ButtonText                string                    `json:"buttonText,omitempty"`
   Domains                   []string                  `json:"domains,omitempty"`
-  LambdaConfiguration       ProviderLambdaConfiguration `json:"lambdaConfiguration,omitempty"`
   Oauth2                    IdentityProviderOauth2Configuration `json:"oauth2,omitempty"`
 }
 
@@ -2332,6 +2331,12 @@ type Requirable struct {
 }
 
 /**
+ * Interface for any object that requires CORS configuration.
+ */
+type RequiresCORSConfiguration struct {
+}
+
+/**
  * @author Brian Pontarelli
  */
 type SAMLv2ApplicationConfiguration struct {
@@ -2365,7 +2370,6 @@ type SAMLv2IdentityProvider struct {
   IdpEndpoint               string                    `json:"idpEndpoint,omitempty"`
   Issuer                    string                    `json:"issuer,omitempty"`
   KeyId                     string                    `json:"keyId,omitempty"`
-  LambdaConfiguration       ProviderLambdaConfiguration `json:"lambdaConfiguration,omitempty"`
   UseNameIdForEmail         bool                      `json:"useNameIdForEmail,omitempty"`
 }
 
